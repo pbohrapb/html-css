@@ -1,0 +1,470 @@
+
+@charset "utf-8";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100;1,400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+
+
+:root
+{
+    --cor0: #E8D207;
+    --cor1: #F52A16;
+    --cor2: #1D29DB;
+    --cor3: #2BF548;
+    --cor4: #EBA81A;
+    --cor5: rgba(38, 38, 107, 0.579);
+
+    --font-padrao:  'Roboto', sans-serif;
+    --cursive-texto:'Cedarville Cursive', cursive;
+    --font-h-1-2:'Fredericka the Great', cursive;
+    --font-texto-2: 'Sriracha', cursive;
+}
+
+*
+{
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* modo dark */
+
+section.page
+{
+    background: #fff;
+    color: #444; 
+}
+
+#dark-mode-input
+{
+    display: none;
+}
+
+#dark-mode-input:checked ~ .page
+{
+    background: #444;
+    color: #fff;
+}
+
+.dark-mode-toggler
+{
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background: #ccc;
+    border: 2px solid #bbb;
+    border-radius: 20px;
+    top: 65px;
+    right: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+.dark-mode-toggler div
+{
+    width: 12px;
+    height: 12px;
+    background:  var(--cor5);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: all 300ms ease-in-out;
+}
+
+#dark-mode-input:checked ~ 
+.dark-mode-toggler
+{
+    background: var(--cor5);
+}
+
+#dark-mode-input:checked ~ 
+.dark-mode-toggler div
+{
+    background: #ccc;
+    left: 21px;
+}
+
+/* fim modo dark */
+
+
+/* inicio novo menu */
+
+nav
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #23232e;
+    height: 8vh;
+}
+
+a 
+{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+  
+a:hover 
+{
+    opacity: 0.7;
+}
+  
+.logo 
+{
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+  
+.nav-list 
+{
+    list-style: none;
+    display: flex;
+}
+  
+.nav-list li
+{
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+  
+.mobile-menu 
+{
+    display: none;
+    cursor: pointer;
+}
+  
+.mobile-menu div
+{
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+}
+  
+@media (max-width: 999px)
+{
+
+    body 
+    {
+        overflow-x: hidden;
+    }
+
+    .nav-list
+    {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in;
+    }
+
+    .nav-list li
+    {
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .mobile-menu 
+    {
+        display: block;
+    }
+}
+  
+.nav-list.active 
+{
+    transform: translateX(0);
+}
+  
+@keyframes navLinkFade 
+{
+    from 
+    {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    to
+    {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+  
+.mobile-menu.active .line1
+{
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+  
+.mobile-menu.active .line2
+{
+    opacity: 0;
+}
+  
+.mobile-menu.active .line3 
+{
+    transform: rotate(45deg) translate(-5px, -7px);
+}
+
+/* inicio slider */
+
+main.home
+{
+}
+
+
+.slider
+{
+  margin: 0 auto; /*0 cima baixo auto direita esquerda*/ 
+  height: 400px;
+  width: 800px;
+  overflow: hidden;
+}
+
+.slides
+{
+  height: 400px;
+  width: 400%;
+  display: flex;
+}
+
+.slides input
+{
+  display: none; /* oculta os °°°*/
+}
+
+.slide
+{
+  width: 25%;
+  position: relative;
+}
+
+.slide img{
+  width: 800px;
+}
+
+.manual-navigation
+{
+  position:absolute;
+  width: 800px;
+  margin-top: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn
+{
+  border: 2px solid red;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child)
+{
+  margin-right: 40px;
+}
+
+.manual-btn:hover
+{
+  background-color: blue;
+}
+
+#radio1:checked ~ .first
+{
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first
+{
+  margin-left: -25%;
+}
+
+#radio3:checked ~ .first
+{
+  margin-left: -50%;
+}
+
+#radio4:checked ~ .first
+{
+  margin-left: -75%;
+}
+
+
+/* fim slider */
+
+
+main.comercio 
+{
+    height: 200vh;
+    max-width: 800px;
+    min-width: 350px;
+    margin: auto;
+}
+
+main.comercio img
+{
+    width: 800px;
+    margin: auto;
+}
+
+main.comercio h1
+{
+    padding: 1em 0;
+}
+
+main.comercio p
+{
+    margin: 1em 0;
+    text-align: justify;
+    text-indent: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+h3.autor
+{
+    text-align: right;
+    margin-bottom: 30px;
+    color: var(--cor2);
+    font-family: cursive;
+}
+
+
+footer.creditos
+{
+    position: absolute;
+    background-color: black;
+    margin-top: 80%;
+    width: 100%;
+}
+
+footer.creditos p
+{
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+}    
+
+/* configurção da paagina p5.1 */
+
+
+body
+{
+    background-image: url(/img/escudo.png);
+    background-position:;
+    background-repeat: repeat-y;
+    background-size: 100px;
+    
+}
+
+section
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 1000px;
+    min-width: 350px;
+    gap: ;
+    padding-top: 10vh;
+    padding-bottom: 10vh; 
+    line-height: 2em; /* espaçamento entre linhas */
+    margin: auto;
+}
+
+section.normal
+{
+    background-color: #fff;
+    color: black;
+}
+
+section.normal h1
+{
+    margin-bottom: 20px;
+    text-align: justify;
+    background: linear-gradient(to right, var(--cor1), var(--cor2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+section.normal p
+{
+    text-align: justify;
+    text-indent: 30px;
+    background: linear-gradient(to right, var(--cor1), var(--cor2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+section.imagem
+{
+    background-color: rgba(0, 0, 0, 0.831);
+    color: #fff;
+}
+
+section.imagem > h1
+{
+    margin-bottom: 20px;
+    /* colocolar bakground para facilitar visualização por causa da imagem */
+    background: linear-gradient(to right, var(--cor1), var(--cor2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+section.imagem > p
+{
+    text-align: justify;
+    text-indent: 30px;
+    background: linear-gradient(to right, var(--cor1), var(--cor2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-texto-2);
+}
+
+section#img01
+{
+    background-image: url('/img/industria.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+section#img02
+{
+    background-image: url('/img/petrobras.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+section#img03
+{
+    background-image: url('/img/betim.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
